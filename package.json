@@ -1,0 +1,24 @@
+{
+  "name": "zkteco-f18-websocket",
+  "version": "1.0.0",
+  "description": "Real-time WebSocket bridge for ZKTeco F18 access control & time attendance (device pushes data, server broadcasts to a WebSocket API)",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node tests/simulate-device.js"
+  },
+  "keywords": [
+    "zkteco",
+    "f18",
+    "websocket",
+    "biometric",
+    "attendance",
+    "access-control"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
