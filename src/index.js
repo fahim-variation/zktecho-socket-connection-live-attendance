@@ -40,7 +40,7 @@ const push = new PushServer(config.pushPort, {
     // the count never double-counts a retransmitted entry.
     const fresh = deviceLog.ingest(sn, records);
     for (const rec of fresh) {
-      logger.data('BRIDGE', `employeeID=${rec.userId}   checkinTime=${rec.device24h || toDevice24h(rec.timestamp)}`);
+      logger.data('BRIDGE', `employeeID=${rec.userId}   checkType=${rec.checkType || ''}   checkinTime=${rec.device24h || toDevice24h(rec.timestamp)}`);
       api.send(rec); // forward to HR API ( EmployeID + checkinTime )
     }
     wsHub.addScans(fresh);

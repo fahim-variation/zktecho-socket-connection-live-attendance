@@ -72,10 +72,10 @@ const PAGE = `<!DOCTYPE html>
     <div class="scan-scroll">
       <table id="scanTable">
         <thead>
-          <tr><th>EmployeID</th><th>Checkin status</th><th>Checkin Time</th></tr>
+          <tr><th>EmployeID</th><th>Check Type</th><th>Checkin status</th><th>Checkin Time</th></tr>
         </thead>
         <tbody id="scans">
-          <tr class="empty"><td colspan="3">No scans yet. Press your finger on the device.</td></tr>
+          <tr class="empty"><td colspan="4">No scans yet. Press your finger on the device.</td></tr>
         </tbody>
       </table>
     </div>
@@ -149,6 +149,7 @@ const PAGE = `<!DOCTYPE html>
           if (emptyRow) emptyRow.remove();
           const tr = document.createElement('tr');
           tr.innerHTML = '<td class="emp">' + r.userId + '</td>'
+            + '<td>' + (r.checkType || '') + '</td>'
             + '<td>' + (r.statusLabel || '') + '</td>'
             + '<td>' + (r.device24h || r.timestamp) + '</td>';
           scans.prepend(tr);

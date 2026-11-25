@@ -2,7 +2,12 @@
  * HR API forwarder.
  *
  * Sends every accepted scan to the HR attendance endpoint as a GET query:
- *   GET https://hr.variationbd.com/api/attendnance?finger_id=<userId>&in_out_time=<YYYY-MM-DD HH:MM:SS>
+ *   GET https://hr.variationbd.com/api/attendnance?finger_id=<userId>
+ *       &check_type=FingerPrint&in_out_time=<YYYY-MM-DD HH:MM:SS>
+ *
+ * check_type carries the CHECK TYPE / device type ("mobile" for app punches,
+ * "FingerPrint" for the F18), NOT check-in/check-out. latitude_and_longitude is omitted —
+ * only mobile-app punches have GPS; machine rows stay NULL.
  *
  * Notes:
  *  • Data source rule unchanged: the values forwarded are the ones shown on
@@ -62,6 +67,7 @@ class ApiForwarder {
     const url = new URL(this.baseUrl);
     url.searchParams.set('finger_id', fingerId);
     url.searchParams.set('in_out_time', inOutTime);
+    url.searchParams.set('check_type', rec.checkType || '');
 
     this._request(url)
       .then((body) => {
