@@ -575,7 +575,7 @@ class HttpAdmsHandler {
         r.serialNumber = sn;
         r.deviceIp = (session.remote || "").split(":")[0];
         r.eventType = "attendance";
-        r.checkType = "FingerPrint";
+        r.checkType = "fingerPrint";
         r.statusLabel = humanStatus(r.status);
         r.verifyModeLabel = humanVerifyMode(r.verifyMode);
         // ── checkinTime: the machine's OWN timestamp, verbatim ──
